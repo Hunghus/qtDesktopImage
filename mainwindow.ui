@@ -50,14 +50,17 @@
      <string>Sản phẩm của nhóm HHQV-Hus</string>
     </property>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QLabel" name="label_pic">
     <property name="geometry">
      <rect>
-      <x>159</x>
-      <y>29</y>
-      <width>381</width>
-      <height>221</height>
+      <x>180</x>
+      <y>20</y>
+      <width>341</width>
+      <height>231</height>
      </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -67,7 +70,7 @@
      <x>0</x>
      <y>0</y>
      <width>576</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
