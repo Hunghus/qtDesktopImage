@@ -14,35 +14,12 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>120</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>118</width>
-       <height>259</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>280</x>
       <y>270</y>
-      <width>201</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -53,7 +30,7 @@
    <widget class="QLabel" name="label_pic">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>230</x>
       <y>20</y>
       <width>341</width>
       <height>231</height>
@@ -61,6 +38,16 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="lstFiles">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>191</width>
+      <height>231</height>
+     </rect>
     </property>
    </widget>
   </widget>
