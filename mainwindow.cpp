@@ -27,7 +27,7 @@ void MainWindow::on_actionOpen_triggered()
 {
     QFileDialog diag(this);
     diag.setFileMode(QFileDialog::ExistingFiles);
-    file_names = diag.getOpenFileNames(this,"Open a file", "C://");
+    file_names = diag.getOpenFileNames(this,"Open a file", "");
     if( !file_names.isEmpty() )
     {
         for (int i =0;i<file_names.count();i++){
