@@ -37,13 +37,16 @@ ApplicationWindow {
         height: 383
         ListView {
             id: listView
+            boundsBehavior: Flickable.StopAtBounds
+            flickableDirection: Flickable.HorizontalAndVerticalFlick
             model: ListModel {}
             anchors.fill: parent
+            clip: true
             delegate:
                 Text {
                     id: text
                     width: parent.width
-                    wrapMode: Text.WordWrap
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     text: name
                     MouseArea{
                         anchors.fill: parent
@@ -62,7 +65,6 @@ ApplicationWindow {
         y: 46
         width: 303
         height: 383
-        source: "qrc:/qtquickplugin/images/template_image.png"
     }
     menuBar: MenuBar {
             Menu {
