@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->label_pic->setScaledContents( true );
     connect(ui->lstFiles, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(on_lstFiles_itemDoubleClicked(QListWidgetItem *item)));
 }
 
@@ -26,7 +27,7 @@ void MainWindow::on_actionOpen_triggered()
 {
     QFileDialog diag(this);
     diag.setFileMode(QFileDialog::ExistingFiles);
-    file_names = diag.getOpenFileNames(this,"Open a file", "C://");
+    file_names = diag.getOpenFileNames(this,"Open a file", "");
     if( !file_names.isEmpty() )
     {
         for (int i =0;i<file_names.count();i++){
@@ -41,5 +42,6 @@ void MainWindow::on_lstFiles_itemDoubleClicked(QListWidgetItem *item)
 {
         QString name = item->text();
         QPixmap pix(name);
-        ui->label_pic->setPixmap(pix.scaled(ui->label_pic->width(),ui->label_pic->height(), Qt::KeepAspectRatio));
+        ui->label_pic->setPixmap(pix.scaled(ui->label_pic->width(),ui->label_pic->height(), Qt::KeepAspectRatioByExpanding));
+
 }

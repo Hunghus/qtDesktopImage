@@ -5,16 +5,15 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += quick
+CONFIG += c++11
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = QT
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp
 
-HEADERS  += mainwindow.h
-
-FORMS    += mainwindow.ui
+RESOURCES += \
+    qml.qrc
