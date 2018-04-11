@@ -13,7 +13,11 @@ TARGET = QT
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    showmessage.cpp
 
 RESOURCES += \
     qml.qrc
+
+HEADERS += \
+    showmessage.h
