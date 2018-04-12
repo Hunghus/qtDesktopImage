@@ -31,8 +31,6 @@ ApplicationWindow {
                 }
 
             }
-
-
         }
     }
     Action {
@@ -42,99 +40,53 @@ ApplicationWindow {
             fileDialog.open()
         }
     }
-//    Flickable {
-//        id: flick
-//        anchors.fill: parent
-//        contentWidth: width
-//        contentHeight: height * surfaceViewportRatio
-//        flickableDirection: Flickable.HorizontalAndVerticalFlick
-//        onFlickStarted : {
-//            console.log(flick.contentWidth, flick.contentHeight)
-//            for (var i = i_old ; i < i_old + 10 ; i ++){
-//                console.log(array[i])
-//                list.append({name : array[i]})
-
-//            }
-//            if (i_old + 10 < array.length){
-
-//            } else if (i_old < array.length){
-//                for (var i = i_old ; i < array.length; i ++){
-//                    list.append({name : array[i]})
-//                    console.log(array[i])
-//                }
-//            }
-
-
-//            i_old += 10;
-//        }
-//        onMovementEnded: {
-//            console.log("tests")
-//            for (var i = i_old ; i < i_old + 10 ; i ++){
-//                console.log(array[i])
-//                list.append({name : array[i]})
-
-//            }
-//            if (i_old + 10 < array.length){
-
-//            } else if (i_old < array.length){
-//                for (var i = i_old ; i < array.length; i ++){
-//                    list.append({name : array[i]})
-////                    console.log(array[i])
-//                }
-//            }
-
-
-//            i_old += 10;
-//        }
-        GridView {
-            id: grid
-            width: parent.width
-            height: parent.height
-            //            clip: true
-            anchors.bottomMargin: 0
-            anchors.rightMargin: 0
-            onMovementEnded: {
-                console.log("tests")
+    GridView {
+        id: grid
+        width: parent.width
+        height: parent.height
+        anchors.bottomMargin: 0
+        anchors.rightMargin: 0
+        onMovementEnded: {
+            if (atYEnd){
                 for (var i = i_old ; i < i_old + 10 ; i ++){
-//                    console.log(array[i])
                     list.append({name : array[i]})
-
                 }
                 if (i_old + 10 < array.length){
 
                 } else if (i_old < array.length){
                     for (var i = i_old ; i < array.length; i ++){
                         list.append({name : array[i]})
-//                            console.log(array[i])
                     }
                 }
 
 
                 i_old += 10;
             }
-            cellWidth: parent.width / 3
-            cellHeight: parent.height / 3
-            model: ListModel{
-                id: list
-            }
-            delegate:
-                Rectangle {
-                    id: photoFrame
-                    width: grid.cellWidth * 0.9
-                    height: grid.cellHeight * 0.9
-                    border.color: "black"
-                    border.width: 2
-                    smooth: true
+
+        }
+        cellWidth: parent.width / 3
+        cellHeight: parent.height / 3
+        model: ListModel{
+            id: list
+        }
+        delegate:
+            Rectangle {
+                id: photoFrame
+                width: grid.cellWidth * 0.9
+                height: grid.cellHeight * 0.9
+                border.color: "black"
+                border.width: 2
+                smooth: true
+                antialiasing: true
+                Image {
+                    id: image
+                    anchors.fill: parent
+                    fillMode: Image.PreserveAspectCrop
+                    source: name
                     antialiasing: true
-                    Image {
-                        id: image
-                        anchors.fill: parent
-                        fillMode: Image.PreserveAspectCrop
-                        source: name
-                        antialiasing: true
-                    }
-            }
-}
+                }
+        }
+    }
     menuBar: MenuBar {
             Menu {
                 title: "&File"
