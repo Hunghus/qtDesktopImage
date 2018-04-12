@@ -10,22 +10,36 @@ ApplicationWindow {
     id: root
     visible: true
     width: 1024; height: 600
+    property var array: Array
+    property int i_old: 10
     property int highestZ: 0
     property real defaultSize: 200
     property var currentFrame: undefined
     property real surfaceViewportRatio: 1.5
-    property string picturesLocation : "";
-    property var imageNameFilters : ["*.png", "*.jpg", "*.gif"];
+    property string picturesLocation : "C:\\"
+    property var imageNameFilters : ["*.png","*.ppm", "*.jpg", "*.gif"];
     minimumWidth: 400
     minimumHeight: 300
     color: "#d5d6d8"
     FileDialog {
         id: fileDialog
+
         title: "Choose a folder with some images"
-        selectFolder: true
+        selectMultiple: true
         folder: picturesLocation
         onAccepted: {
-            folderModel.folder = fileUrl + "/"
+            console.log("tesst")
+            for (var i = 0 ; i < fileDialog.fileUrls.length ; i ++){
+
+                array[i] = fileDialog.fileUrls[i].toString();
+                 console.log(array[i])
+                if(i<10){
+                    list.append({name : array[i]})
+                }
+
+            }
+
+
         }
     }
     Action {
@@ -40,12 +54,28 @@ ApplicationWindow {
         anchors.fill: parent
         contentWidth: width * surfaceViewportRatio
         contentHeight: height * surfaceViewportRatio
+        onMovementEnded: {
+            console.log("tests")
+            for (var i = i_old ; i < i_old + 10 ; i ++){
+                console.log(array[i])
+                list.append({name : array[i]})
+
+            }
+            if (i_old + 10 < array.length){
+
+            } else if (i_old < array.length){
+                for (var i = i_old ; i < array.length; i ++){
+                    list.append({name : array[i]})
+//                    console.log(array[i])
+                }
+            }
+
+
+            i_old += 10;
+        }
         Repeater {
-            model: FolderListModel {
-                id: folderModel
-                objectName: "folderModel"
-                showDirs: false
-                nameFilters: imageNameFilters
+            model: ListModel{
+                id: list
             }
             Rectangle {
                 id: photoFrame
@@ -59,16 +89,16 @@ ApplicationWindow {
                 border.width: 2
                 smooth: true
                 antialiasing: true
-                Component.onCompleted: {
-                    x = Math.random() * root.width - width / 2
-                    y = Math.random() * root.height - height / 2
-                    rotation = Math.random() * 13 - 6
-                }
+//                Component.onCompleted: {
+//                    x = Math.random() * root.width - width / 2
+//                    y = Math.random() * root.height - height / 2
+//                    rotation = Math.random() * 13 - 6
+//                }
                 Image {
                     id: image
                     anchors.centerIn: parent
                     fillMode: Image.PreserveAspectFit
-                    source: folderModel.folder + fileName
+                    source: name
                     antialiasing: true
                 }
                 PinchArea {
