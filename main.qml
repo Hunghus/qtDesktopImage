@@ -3,24 +3,25 @@ import QtQuick.Layouts 1.0
 import QtQuick.Dialogs 1.1
 import QtQuick.Window 2.1
 import QtQuick 2.6
-import Qt.labs.folderlistmodel 1.0
-
+import MyLang 1.0
 
 ApplicationWindow {
     id: root
+    title: qsTr("Image Viewer") + mytrans.emptyString
     visible: true
     width: 1024; height: 600
     property var array: Array
     property int i_old: 10
     property string picturesLocation : "C:\\"
     property var imageNameFilters : ["*.png","*.ppm", "*.jpg", "*.gif"];
+    property var fileDiaTitle: qsTr("Choose some image")
     minimumWidth: 400
     minimumHeight: 300
     color: "#d5d6d8"
     FileDialog {
         id: fileDialog
 
-        title: "Choose some images"
+        title: qsTr(root.fileDiaTitle)
         selectMultiple: true
         folder: picturesLocation
         onAccepted: {
@@ -35,7 +36,7 @@ ApplicationWindow {
     }
     Action {
         id: fileOpenAction
-        text: "Open"
+        text: qsTr("Open") + mytrans.emptyString
         onTriggered: {
             fileDialog.open()
         }
@@ -89,13 +90,28 @@ ApplicationWindow {
     }
     menuBar: MenuBar {
             Menu {
-                title: "&File"
+                title: qsTr("File") + mytrans.emptyString
                 MenuItem { action: fileOpenAction }
-                MenuItem { text: "Quit"; onTriggered: Qt.quit() }
+                MenuItem { text: qsTr("Quit") + mytrans.emptyString; onTriggered: Qt.quit() }
             }
             Menu {
-                title: "&Help"
-                MenuItem { text: "About..." ; onTriggered: aboutBox.open() }
+                title: qsTr("Help") + mytrans.emptyString
+                MenuItem { text: qsTr("About...") ; onTriggered: aboutBox.open() }
+            }
+            Menu {
+                title: qsTr("Translate") + mytrans.emptyString
+                MenuItem {
+                    text: qsTr("English") + mytrans.emptyString
+                    onClicked: {
+                        mytrans.updateLanguage(MyLang.ENG);
+                    }
+                }
+                MenuItem {
+                    text: qsTr("Vietnamese") + mytrans.emptyString
+                    onClicked: {
+                        mytrans.updateLanguage(MyLang.VIE);
+                    }
+                }
             }
         }
 }

@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>vie.qm</file>
+        <file>main.cpp</file>
+        <file>image/England.png</file>
+        <file>image/Japan.png</file>
+        <file>image/Vietnam.png</file>
     </qresource>
 </RCC>
