@@ -100,18 +100,22 @@ ApplicationWindow {
             }
             Menu {
                 title: qsTr("Translate") + mytrans.emptyString
+
                 MenuItem {
                     text: qsTr("English") + mytrans.emptyString
                     onClicked: {
                         mytrans.updateLanguage(MyLang.ENG);
+
                     }
                 }
                 MenuItem {
                     text: qsTr("Vietnamese") + mytrans.emptyString
                     onClicked: {
                         mytrans.updateLanguage(MyLang.VIE);
+
                     }
                 }
             }
+
         }
 }
