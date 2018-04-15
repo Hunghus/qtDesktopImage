@@ -12,8 +12,14 @@ CONFIG += c++11
 TARGET = QT
 TEMPLATE = app
 
-
-SOURCES += main.cpp
-
+TRANSLATIONS = vie.ts
+SOURCES += \
+    main.cpp
 RESOURCES += \
     qml.qrc
+
+HEADERS += \
+    mylang.h \
+    mytranslation.h
+
+DISTFILES +=
